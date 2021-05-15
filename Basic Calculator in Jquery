@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+input{
+    outline: 0;
+    position: relative;
+    left: 500px;
+    top: 5px;
+    border: 0;
+    color: #495069;
+    background-color: 4px;
+    width: 60px;
+    height: 50px;
+    float: left;
+    margin: 5px;
+    font-size: 20px;
+    box-shadow: 0 4px rgba(0,0,0,0.2);
+}
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+<input type="text"id="txt"value="" disabled="disabled"style="width: 240px;border: 2px solid red;"><br><br><br>
+<table >
+    <tr >
+        <input type="hidden"id="ops">
+        <th><input type="button"value="1"id="1"class="btn btn-success"></th>
+        <th><input type="button"value="2"id="2"class="btn btn-success"></th>
+        <th><input type="button"value="3"id="3"class="btn btn-success"></th>
+        <th><input type="button"value="+"id="add"class="btn btn-success"></th>
+    </tr>
+    <tr >
+        <th><input type="button"value="4"id="4"class="btn btn-success"></th>
+        <th><input type="button"value="5"id="5"class="btn btn-success"></th>
+        <th><input type="button"value="6"id="6"class="btn btn-success"></th>
+        <th><input type="button"value="-"id="sub"class="btn btn-success"></th>
+        </tr>
+    <tr >
+        <th><input type="button"value="7"id="7"class="btn btn-success"></th>
+        <th><input type="button"value="8"id="8"class="btn btn-success"></th>
+        <th><input type="button"value="9"id="9"class="btn btn-success"></th>
+         <th><input type="button"value="*"id="mul"class="btn btn-success"></th>
+        </tr>
+    <tr>
+        <th><input type="button"value="0"id="0"class="btn btn-success"></th>
+         <th><input type="button"value="/"id="div"class="btn btn-success"></th>
+         <th><input type="button"value="C"id="ce"class="btn btn-success"></th>
+         <th><input type="button"value="="id="eq" class="btn btn-success"></th>
+        </tr>
+</table>
+</body>
+</html>
+<script src="/static/jquery.js"type="application/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('#1,#2,#3,#4,#5,#6,#7,#8,#9,#0').click(function() {
+            var v = $(this).val()
+            $('#txt').val($('#txt').val() + v)
+
+        })
+        $("#add").click(function () {
+            if($("#txt").val()=='')
+                return false
+            else
+            {
+                opr1=$("#txt").val()
+                $("#txt").val("")
+                $("#ops").val("+")
+            }
+
+        })
+        $("#sub").click(function () {
+            if($("#txt").val()=='')
+                return false
+            else
+            {
+                opr1=$("#txt").val()
+                $("#txt").val("")
+                $("#ops").val("-")
+            }
+
+        })
+        $("#mul").click(function () {
+            if($("#txt").val()=='')
+                return false
+            else
+            {
+                opr1=$("#txt").val()
+                $("#txt").val("")
+                $("#ops").val("*")
+            }
+
+        })
+        $("#div").click(function () {
+            if($("#txt").val()=='')
+                return false
+            else
+            {
+                opr1=$("#txt").val()
+                $("#txt").val("")
+                $("#ops").val("/")
+            }
+
+        })
+        $("#ce").click(function () {
+            $("#txt").val('')
+
+        })
+        $("#eq").click(function () {
+
+            opr2=$("#txt").val()
+            if($("#ops").val()=='+')
+            {
+                res=parseFloat(opr1)+parseFloat(opr2)
+                $("#txt").val(res)
+            }
+            else if($("#ops").val()=='-')
+            {
+                res=parseFloat(opr1)-parseFloat(opr2)
+                $("#txt").val(res)
+            }
+            else if($("#ops").val()=='*')
+            {
+                res=parseFloat(opr1)*parseFloat(opr2)
+                $("#txt").val(res)
+            }
+            else if($("#ops").val()=='/')
+            {
+                res=parseFloat(opr1)/parseFloat(opr2)
+                $("#txt").val(res)
+            }
+            else
+                return false
+
+        })
+
+    });
+
+</script>
